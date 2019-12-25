@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Books</title>
+    <style>
+        body {
+           font-family:'calibri';
+           font-size:12pt;
+        }
+    </style>
+</head>
+<body>
+<h1>Books</h1>
+<a href="/catalog/addbook">Add New Book</a>
+<p></p>
+<table style="width:100%">
+    <tr style="background-color:navy;color:white">
+        <th>Book Id</th>
+        <th>Title</th>
+        <th>Publisher</th>
+        <th>Author(s)</th>
+        <th>Price</th>
+    </tr>
+
+    {%for book in books%}
+    <tr>
+        <td>{{book.0}}</td>
+        <td>{{book.1}}</td>
+        <td>{{book.2}}</td>
+        <td>{{book.3}}</td>
+        <td style="text-align:right">{{book.4}}</td>
+    </tr>
+
+    {%endfor%}
+
+
+</table>
+
+</body>
+</html>

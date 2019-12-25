@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Book</title>
+</head>
+<body>
+<h2>Add Book</h2>
+<a href="/catalog/books">List Books</a>
+<p></p>
+<form method="post">
+    {% csrf_token %}
+    Title<br/>
+    <input type="text" name="title" size="30" required />
+    <p></p>
+
+    Publisher<br/>
+    <input type="text" name="publisher" size="30" required />
+    <p></p>
+
+    Author(s)<br/>
+    <input type="text" name="authors" size="50" required />
+    <p></p>
+
+    Price<br/>
+    <input type="number" name="price" size="10" required />
+    <p></p>
+
+    <input type="submit" value="Submit"/>
+
+</form>
+<p></p>
+<h4>{{message}}</h4>
+
+</body>
+</html>
