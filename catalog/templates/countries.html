@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Countries</title>
+</head>
+<body>
+<h2>Countries</h2>
+<form>
+    Select Region :
+    <select name="region">
+        {% for opt in regions %}
+            <option value="{{opt}}">{{opt}}</option>
+        {% endfor %}
+    </select>
+    <p></p>
+    <input type="submit" value="Get Countries"/>
+</form>
+
+{% if countries %}
+<table width="100%" cellpadding="5pt">
+    <tr style="background-color:navy;color:white">
+        <th>Name</th>
+        <th>Capital</th>
+        <th>Population</th>
+        <th>Area</th>
+        <th>Flag</th>
+    </tr>
+    {%for c in countries %}
+    <tr>
+        <td>{{c.name}}</td>
+        <td>{{c.capital}}</td>
+        <td style="text-align:right">{{c.population}}</td>
+        <td style="text-align:right">{{c.area}}</td>
+        <td>
+            <img src="{{c.flag}}" style="width:100px;height=70px" />
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endif %}
+</body>
+</html>
