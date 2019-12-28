@@ -1,0 +1,33 @@
+{% extends "customer_master.html" %}
+
+{% block body %}
+
+<h2>List of Customers</h2>
+
+<table width="100%">
+    <tr class="colhead">
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        <th>
+        </th>
+    </tr>
+
+    {% for cust in customers %}
+    <tr>
+        <td>{{cust.id}}</td>
+        <td>{{cust.name}}</td>
+        <td>{{cust.email}}</td>
+        <td>{{cust.mobile}}</td>
+        <td style="text-align:center">
+            <a href="/catalog/customer/edit/{{cust.id}}">Edit</a>
+            <a onclick="return confirm('Do you want to delete customer?')"
+               href="/catalog/customer/delete/{{cust.id}}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+{% endblock %}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Customers</title>
+    <link rel="stylesheet" href="{% static 'styles.css'%}"/>
+</head>
+<body>
+<div class="banner">Customers</div>
+<div class="menu">
+    [<a href="/catalog/customer/home">Home</a>]
+    &nbsp;
+    [<a href="/catalog/customer/list">List</a>]
+    &nbsp;
+    [<a href="/catalog/customer/add">Add</a>]
+    &nbsp;
+    [<a href="/catalog/customer/search">Search</a>]
+</div>
+{% block body %}
+{% endblock %}
+
+</body>
+</html>

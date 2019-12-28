@@ -1,0 +1,25 @@
+{% extends "customer_master.html" %}
+
+{% block body %}
+
+<h2>Add Customer</h2>
+
+<form method="post">
+    {% csrf_token %}
+    Name <br/>
+    {{form.name}}
+    <p></p>
+    Email Address <br/>
+    {{form.email}}
+    <span style="color:red">{{form.email.errors.0}}</span>
+    <p></p>
+    Mobile Number<br/>
+    {{form.mobile}}
+    <p></p>
+    Remarks <br/>
+    {{form.remarks}}
+    <p></p>
+    <input type="submit" value="Submit"/>
+</form>
+
+{% endblock %}
