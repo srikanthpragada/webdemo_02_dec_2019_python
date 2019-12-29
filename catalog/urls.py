@@ -16,4 +16,7 @@ urlpatterns = [
     path("customer/add/", customer_views.customer_add),
     path("customer/delete/<int:id>/", customer_views.customer_delete),
     path("customer/edit/<int:id>/", customer_views.customer_edit),
+    path("customer/validate_email", customer_views.validate_email),
+    path("customer/search", customer_views.customer_search),
+    path("customer/dosearch", customer_views.customer_do_search),
 ]

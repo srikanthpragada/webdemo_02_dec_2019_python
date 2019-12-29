@@ -66,15 +66,26 @@ def customer_edit(request, id):
             return render(request, 'customer_edit.html',
                           {'form': form})
         return redirect("/catalog/customer/list")
+
+
+def validate_email(request):
+    try:
+        email = request.GET['email']
+        cust = Customer.objects.get(email=email)
+        return HttpResponse("p")  # Email is present
+    except ObjectDoesNotExist:
+        return HttpResponse("u")  # Email is not present, means unique
+
+
 #
 #
-# def author_search(request):
-#     return render(request, 'author_search.html')
-#
-#
-# def author_do_search(request):
-#     name = request.GET['name']
-#     # convert author objects to dict
-#     authors = list(Author.objects.filter(name__contains=name).values())
-#     # send list of dict in the form of array of json objects
-#     return JsonResponse(authors, safe=False)
+def customer_search(request):
+    return render(request, 'customer_search.html')
+
+
+def customer_do_search(request):
+    name = request.GET['name']
+    # convert author objects to dict
+    customers = list(Customer.objects.filter(name__contains=name).values())
+    # send list of dict in the form of array of json objects
+    return JsonResponse(customers, safe=False)

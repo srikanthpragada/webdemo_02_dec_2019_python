@@ -1,0 +1,27 @@
+{% extends "customer_master.html" %}
+
+{% block body %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    function getCustomers() {
+       $.get("/catalog/customer/dosearch?name=" + $("#name").val(),null, showCustomers);
+    }
+    function showCustomers(customers) {
+        output = "";
+        for(i=0; i < customers.length; i ++)
+             output += "<li>" + customers[i].name + "</li>";
+
+        $("#customers").html(output)
+    }
+
+</script>
+
+<h2>Search</h2>
+
+Name : <input type="text" id="name"/>
+<button onclick="getCustomers()">Go</button>
+<ul id="customers">
+
+</ul>
+
+{% endblock %}

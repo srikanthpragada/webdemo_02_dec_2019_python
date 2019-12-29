@@ -1,6 +1,8 @@
 {% extends "customer_master.html" %}
 
 {% block body %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 
 <h2>Add Customer</h2>
 
@@ -11,7 +13,7 @@
     <p></p>
     Email Address <br/>
     {{form.email}}
-    <span style="color:red">{{form.email.errors.0}}</span>
+    <span id="email_error" style="color:red">{{form.email.errors.0}}</span>
     <p></p>
     Mobile Number<br/>
     {{form.mobile}}
@@ -19,7 +21,29 @@
     Remarks <br/>
     {{form.remarks}}
     <p></p>
-    <input type="submit" value="Submit"/>
+    <input id="submit_button" type="submit" value="Submit"/>
 </form>
+
+<script>
+    $( document ).ready(function() {
+       // bind blur event to id_email
+       $("#id_email").bind("blur",validateEmail);
+    });
+
+    function validateEmail() {
+       $("#email_error").text("")
+       // console.log("Validating email");
+       url = "/catalog/customer/validate_email?email=" + $("#id_email").val()
+       $.get(url,null,processResponse)
+    }
+    function processResponse(response) {
+       $("#submit_button").prop("disabled",false)
+       if (response != "u")
+       {
+          $("#email_error").text("Email already exists");
+          $("#submit_button").prop("disabled",true)
+       }
+    }
+</script>
 
 {% endblock %}
